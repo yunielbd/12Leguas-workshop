@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Angular CLI cache
+.angular/
+.angular/cache/
+
+# Opcional: archivos de configuración y logs
+*.log
+.vscode/
+.idea/
+
+# Archivos temporales
+tmp/
+temp/
+
+# Otros archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos personales y de entorno
+.env
+.env.*.local

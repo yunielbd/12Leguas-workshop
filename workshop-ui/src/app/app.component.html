@@ -1,0 +1,14 @@
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="text-2xl font-bold text-blue-600">Taller UI</div>
+    <ul class="flex space-x-6">
+      <li><a routerLink="/inventory" class="hover:text-blue-600">Inventario</a></li>
+      <li><a routerLink="/entry"     class="hover:text-blue-600">Entrada</a></li>
+      <li><a routerLink="/exit"      class="hover:text-blue-600">Salida</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-6">
+  <router-outlet></router-outlet>
+</main>

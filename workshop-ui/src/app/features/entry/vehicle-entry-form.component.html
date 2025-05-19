@@ -1,0 +1,107 @@
+<!-- src/app/features/entry/vehicle-entry-form.component.html -->
+<div class="entry-form">
+
+  <button class="close-btn" (click)="close.emit()" aria-label="Cerrar">✕</button>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-content">
+
+    <!-- Tipo -->
+    <div>
+      <label>Tipo:</label>
+      <select formControlName="type" class="input">
+        <option value="DIESEL">Diésel</option>
+        <option value="GASOLINE">Gasolina</option>
+        <option value="ELECTRIC">Eléctrico</option>
+      </select>
+    </div>
+
+    <!-- Matrícula & VIN -->
+    <div class="grid-two">
+      <div>
+        <label>Matrícula:</label>
+        <input formControlName="licensePlate" class="input"/>
+      </div>
+      <div>
+        <label>VIN:</label>
+        <input formControlName="vin" class="input"/>
+      </div>
+    </div>
+
+    <!-- Diésel -->
+    <div *ngIf="form.value.type === 'DIESEL'">
+      <label>Bomba de Inyección:</label>
+      <select formControlName="injectionPumpType" class="input">
+        <option *ngFor="let p of pumpOptions" [value]="p">{{ p }}</option>
+      </select>
+    </div>
+
+    <!-- Gasolina -->
+    <div *ngIf="form.value.type === 'GASOLINE'">
+      <label>Combustibles:</label>
+      <select formControlName="fuelTypes" multiple class="input h-32">
+        <option *ngFor="let f of fuelOptions" [value]="f">{{ f }}</option>
+      </select>
+    </div>
+
+    <!-- Eléctrico -->
+    <ng-container *ngIf="form.value.type === 'ELECTRIC'">
+      <div class="space-y-3">
+        <div>
+          <label>Voltaje (V):</label>
+          <input type="number" formControlName="voltage" class="input"/>
+        </div>
+        <div>
+          <label>Corriente (A):</label>
+          <input type="number" formControlName="current" class="input"/>
+        </div>
+        <div>
+          <label>Tipo de Batería:</label>
+          <select formControlName="batteryType" class="input">
+            <option value="GEL">GEL</option>
+            <option value="LITHIUM">Litio</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Checkbox de conversión -->
+      <div class="mt-4">
+        <label class="inline-flex items-center">
+          <input type="checkbox" formControlName="convert" class="mr-2"/>
+          ¿Convertir vehículo?
+        </label>
+      </div>
+
+      <!-- Opciones de conversión -->
+      <div *ngIf="form.value.convert" class="mt-3 space-y-3">
+        <div>
+          <label>Tipo de Conversión:</label>
+          <select formControlName="conversionType" class="input">
+            <option *ngFor="let ct of convTypes" [value]="ct">{{ ct | titlecase }}</option>
+          </select>
+        </div>
+
+        <!-- Si convierte a gasolina -->
+        <div *ngIf="form.value.conversionType === 'GASOLINE'">
+          <label>Tipo(s) de Combustible:</label>
+          <select formControlName="conversionFuelTypes" multiple class="input h-32">
+            <option *ngFor="let f of fuelOptions" [value]="f">{{ f }}</option>
+          </select>
+        </div>
+
+        <!-- Si convierte a diésel -->
+        <!-- <div *ngIf="form.value.conversionType === 'DIESEL'">
+          <label>Bomba de Inyección de Conversión:</label>
+          <select formControlName="conversionPumpType" class="input">
+            <option *ngFor="let p of pumpOptions" [value]="p">{{ p }}</option>
+          </select>
+        </div> -->
+      </div>
+    </ng-container>
+
+    <!-- Botones -->
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
+      <button type="submit" class="btn-submit">Registrar</button>
+    </div>
+  </form>
+</div>

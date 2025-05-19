@@ -1,0 +1,84 @@
+/* Tailwind @apply para reutilizar utilidades sin inline */
+.inventory-header {
+  @apply flex items-center m-6;
+  h1 { @apply text-3xl font-semibold text-gray-800; }
+}
+
+.btn-new {
+  @apply px-4 py-2 ml-6 bg-blue-600 text-white rounded hover:bg-green-700;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+.modal-container {
+  @apply bg-white rounded-lg shadow-xl w-full max-w-2xl relative;
+
+  /* Nuevo: límite de altura y scroll interno */
+  @apply max-h-[90vh] overflow-y-auto;
+}
+
+.filter-group {
+  @apply flex w-full justify-end;
+  select {
+    @apply border border-gray-300 rounded-lg px-4 py-2
+           focus:outline-none focus:ring-2 focus:ring-blue-400;
+  }
+}
+
+// .filter-group {
+//   @apply flex ml-auto mr-6 sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0;
+//   select {
+//     @apply border border-gray-300 rounded-lg px-4 py-2
+//            focus:outline-none focus:ring-2 focus:ring-blue-400;
+//   }
+// }
+
+.card-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+.card-actions {
+  @apply mt-4 flex items-center space-x-2;
+}
+.vehicle-card {
+  @apply bg-white rounded-xl shadow-sm hover:shadow-lg
+         transition-shadow p-6 flex flex-col justify-between;
+}
+
+.badge {
+  @apply inline-block bg-blue-100 text-blue-800 text-xs
+         font-medium px-2 py-1 rounded-full;
+}
+
+.card-title {
+  @apply mt-2 text-xl font-bold text-gray-700;
+}
+
+.card-subtitle {
+  @apply mt-2 text-lg font-medium text-gray-600;
+}
+
+.card-details {
+  @apply mt-1 text-gray-600 text-sm;
+}
+
+.card-reg-info {
+  @apply mt-3 p-3 bg-gray-50 border border-gray-200 rounded text-gray-800 text-sm italic;
+}
+
+.card-conv-info {
+  @apply mt-2 text-gray-700 font-medium;
+}
+
+.detail-link {
+  @apply mt-4 inline-block text-center bg-blue-600 text-white
+         px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
+}
+
+.btn-delete {
+  @apply px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700;
+}
+
+.btn-reg {
+  @apply px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600;
+}

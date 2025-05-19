@@ -1,0 +1,29 @@
+/* src/app/features/entry/vehicle-entry-form.component.scss */
+.entry-form {
+  @apply p-6 relative bg-white rounded-lg;
+}
+.close-btn {
+  @apply absolute top-4 right-4 text-gray-500 hover:text-gray-700;
+}
+.form-content {
+  @apply space-y-4;
+
+  /* límite de altura dentro del modal y scroll */
+  @apply max-h-[75vh] overflow-y-auto;
+}
+
+.input {
+  @apply w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400;
+}
+.grid-two {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+.form-actions {
+  @apply flex justify-end space-x-3 mt-4;
+}
+.btn-cancel {
+  @apply px-4 py-2 bg-gray-300 rounded hover:bg-gray-400;
+}
+.btn-submit {
+  @apply px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700;
+}

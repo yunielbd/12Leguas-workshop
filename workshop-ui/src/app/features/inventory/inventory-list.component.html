@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="inventory-header">
+    <h1>Inventario de Vehículos</h1>
+    <button class="btn-new" (click)="openEntry()">+</button>
+  </div>
+  <div >
+    <select [(ngModel)]="selectedType" class="filter-group">
+        <option value="">Todos los tipos</option>
+        <option *ngFor="let t of types" [value]="t">{{ t | titlecase }}</option>
+      </select>
+  </div>
+
+  <div class="card-grid">
+    <div *ngFor="let v of filteredVehicles()" class="vehicle-card">
+      <div>
+        <span class="badge">{{ v.type }}</span>
+        <h2 class="card-title">{{ v.licensePlate || v.vin }}</h2>
+        <h3 class="card-subtitle">{{ v.vin }}</h3>
+        <p class="card-details">{{ getDetails(v) }}</p>
+        <!-- Sección de registro/conversión -->
+        <div *ngIf="v.showRegistration" class="card-reg-info">
+          <p>{{ v.registrationInfo }}</p>
+          <p *ngIf="v.conversionInfo" class="card-conv-info">
+            Conversión: {{ v.conversionInfo }}
+          </p>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-reg" (click)="toggleRegistration(v)">
+          {{ v.showRegistration ? 'Ocultar registro' : 'Ver registro' }}
+        </button>
+        <button class="btn-delete" (click)="deleteVehicle(v.id!)">Eliminar</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="showEntryModal" class="modal-overlay">
+  <div class="modal-container">
+    <app-vehicle-entry-form
+  (close)="closeEntry()"
+  (created)="onVehicleCreated()"
+></app-vehicle-entry-form>
+  </div>
+</div>
